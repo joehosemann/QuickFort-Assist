@@ -1,0 +1,57 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" xmlns:Model="clr-namespace:QFA.Model" xmlns:UserControls="clr-namespace:QFA.UserControls" x:Class="QFA.MainPage"
+    mc:Ignorable="d"
+    d:DesignHeight="500" d:DesignWidth="700" Loaded="UserControl_Loaded">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid x:Name="MainWindow">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.7*" />
+                <RowDefinition Height="0.3*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="554*" />
+                <ColumnDefinition Width="200" />
+            </Grid.ColumnDefinitions>
+            <sdk:DataGrid Grid.Row="1" Margin="5" HeadersVisibility="None" RowHeight="20" x:Name="dgXml" AutoGenerateColumns="False" IsReadOnly="True" />
+            <sdk:GridSplitter HorizontalAlignment="Stretch" Height="5" VerticalAlignment="Bottom" Background="#FFBABABA"/>
+            <StackPanel Grid.Column="1" Grid.RowSpan="2" Margin="5">
+                <ComboBox x:Name="cbMenu" Margin="0,0,0,10">
+                    <ComboBoxItem Content="Designation" IsSelected="True"/>
+                    <ComboBoxItem Content="Build"/>
+                </ComboBox>
+                <ListBox x:Name="lbMenu" Margin="0,0,0,10" Loaded="lbMenu_Loaded" Height="300"/>
+                <Grid Margin="0" >
+                    <Grid Height="111" VerticalAlignment="Top">
+                        <Button x:Name="btnImport" Content="Import" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="50" Margin="10,0,0,30" Click="btnImport_Click" />
+                        <Button x:Name="btnExport" Content="Export" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="50" Margin="0,0,10,30" Click="btnExport_Click" />
+                        <Button x:Name="btnRestart" Content="Restart" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="55" Click="btnRestart_Click"/>
+                        <toolkit:NumericUpDown x:Name="numRows" Value="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35,0,0,0" Maximum="50"/>
+                        <toolkit:NumericUpDown x:Name="numColumns" Value="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,0,0,0" Maximum="50" />
+                        <Button x:Name="btnChangeNumber" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0" Content="Submit" Click="btnChangeNumber_Click" />
+                        <sdk:Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Rows:" Margin="0,2,0,0"/>
+                        <sdk:Label HorizontalAlignment="Left" VerticalAlignment="Top" Margin="75,2,0,0" Content="Col:"/>
+                        <ComboBox Height="23" HorizontalAlignment="Stretch" Margin="0,30,0,0" x:Name="cbTileset" VerticalAlignment="Top" Loaded="cbTileset_Loaded" SelectionChanged="cbTileset_SelectionChanged">
+                            <ComboBoxItem Content="phoebus" IsSelected="True" />
+                            <ComboBoxItem Content="default" />
+                        </ComboBox>
+                    </Grid>
+                </Grid>
+            </StackPanel>
+            <Grid Background="White">
+                <toolkit:DockPanel x:Name="dockpanelBorder" Background="#FF3A3A3A" >
+                    <TextBlock TextWrapping="Wrap" Text="Q u i c k F o r t   A s s i s t" FontFamily="Microsoft Sans Serif" Foreground="White" FontWeight="Bold" FontSize="13.333" HorizontalAlignment="Center" Margin="0,1,0,0" VerticalAlignment="Top"/>
+                </toolkit:DockPanel>
+                <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" Margin="16,16,16,21">
+                    <Canvas x:Name="canvasMain" Margin="0" Background="#FF4D4D4D" />
+                </ScrollViewer>
+            </Grid>
+            <Rectangle x:Name="rectFrame" Fill="#CC000000" Stroke="Black" Grid.RowSpan="2" Grid.ColumnSpan="2" Visibility="Collapsed"/>
+        </Grid>
+        <!--<Grid x:Name="Popups" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
+    </Grid>
+</UserControl>

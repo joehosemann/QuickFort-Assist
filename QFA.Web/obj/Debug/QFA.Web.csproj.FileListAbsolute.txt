@@ -1,0 +1,4 @@
+D:\Projects\Personal\QFA\QFA\QFA.Web\bin\QFA.Web.dll
+D:\Projects\Personal\QFA\QFA\QFA.Web\bin\QFA.Web.pdb
+D:\Projects\Personal\QFA\QFA\QFA.Web\obj\Debug\QFA.Web.dll
+D:\Projects\Personal\QFA\QFA\QFA.Web\obj\Debug\QFA.Web.pdb

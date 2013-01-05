@@ -1,0 +1,668 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{56AC02A0-8148-4079-B48C-B0A4BC6436C8}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QFA</RootNamespace>
+    <AssemblyName>QFA</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>QFA.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>QFA.App</SilverlightAppEntry>
+    <TestPageFileName>QFATestPage.html</TestPageFileName>
+    <CreateTestPage>true</CreateTestPage>
+    <ValidateXaml>true</ValidateXaml>
+    <EnableOutOfBrowser>false</EnableOutOfBrowser>
+    <OutOfBrowserSettingsFile>Properties\OutOfBrowserSettings.xml</OutOfBrowserSettingsFile>
+    <UsePlatformExtensions>false</UsePlatformExtensions>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <LinkedServerProject>
+    </LinkedServerProject>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.20421.0</ExpressionBlendVersion>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Expression.Interactions" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System.ComponentModel.DataAnnotations, Version=2.0.5.0, Culture=neutral, PublicKeyToken=ddd0da4d3e678217" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Controls, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Windows.Controls.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Windows.Controls.Data.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Windows.Controls.Input.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Windows.Controls.Toolkit, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Windows.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Windows.Interactivity" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Windows.Browser" />
+    <Reference Include="System.Xml.Linq, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\ImageConverter.cs" />
+    <Compile Include="Converters\RowIndexConverter.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Data.cs" />
+    <Compile Include="Model\Command.cs" />
+    <Compile Include="Model\Element.cs" />
+    <Compile Include="Model\Row.cs" />
+    <Compile Include="UserControls\ImportExport.xaml.cs">
+      <DependentUpon>ImportExport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Tile.xaml.cs">
+      <DependentUpon>Tile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\PropertyValueChange.cs" />
+    <Compile Include="Utilities\SortableCollectionView.cs" />
+    <Compile Include="Utilities\XmlFactory.cs" />
+    <None Include="Model\UnicodeImagePath.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\General.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ImportExport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Tile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\DataSources\QFA.Model.Command.datasource" />
+    <None Include="Properties\DataSources\QFA.Model.Data.datasource" />
+    <None Include="Properties\DataSources\QFA.Model.Tile.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <BlendEmbeddedFont Include="Fonts\lucon.ttf">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+    </BlendEmbeddedFont>
+    <Resource Include="Images\default\tile_0.png" />
+    <Resource Include="Images\default\tile_1.png" />
+    <Resource Include="Images\default\tile_10.png" />
+    <Resource Include="Images\default\tile_100.png" />
+    <Resource Include="Images\default\tile_101.png" />
+    <Resource Include="Images\default\tile_102.png" />
+    <Resource Include="Images\default\tile_103.png" />
+    <Resource Include="Images\default\tile_104.png" />
+    <Resource Include="Images\default\tile_105.png" />
+    <Resource Include="Images\default\tile_106.png" />
+    <Resource Include="Images\default\tile_107.png" />
+    <Resource Include="Images\default\tile_108.png" />
+    <Resource Include="Images\default\tile_109.png" />
+    <Resource Include="Images\default\tile_11.png" />
+    <Resource Include="Images\default\tile_110.png" />
+    <Resource Include="Images\default\tile_111.png" />
+    <Resource Include="Images\default\tile_112.png" />
+    <Resource Include="Images\default\tile_113.png" />
+    <Resource Include="Images\default\tile_114.png" />
+    <Resource Include="Images\default\tile_115.png" />
+    <Resource Include="Images\default\tile_116.png" />
+    <Resource Include="Images\default\tile_117.png" />
+    <Resource Include="Images\default\tile_118.png" />
+    <Resource Include="Images\default\tile_119.png" />
+    <Resource Include="Images\default\tile_12.png" />
+    <Resource Include="Images\default\tile_120.png" />
+    <Resource Include="Images\default\tile_121.png" />
+    <Resource Include="Images\default\tile_122.png" />
+    <Resource Include="Images\default\tile_123.png" />
+    <Resource Include="Images\default\tile_124.png" />
+    <Resource Include="Images\default\tile_125.png" />
+    <Resource Include="Images\default\tile_126.png" />
+    <Resource Include="Images\default\tile_127.png" />
+    <Resource Include="Images\default\tile_128.png" />
+    <Resource Include="Images\default\tile_129.png" />
+    <Resource Include="Images\default\tile_13.png" />
+    <Resource Include="Images\default\tile_130.png" />
+    <Resource Include="Images\default\tile_131.png" />
+    <Resource Include="Images\default\tile_132.png" />
+    <Resource Include="Images\default\tile_133.png" />
+    <Resource Include="Images\default\tile_134.png" />
+    <Resource Include="Images\default\tile_135.png" />
+    <Resource Include="Images\default\tile_136.png" />
+    <Resource Include="Images\default\tile_137.png" />
+    <Resource Include="Images\default\tile_138.png" />
+    <Resource Include="Images\default\tile_139.png" />
+    <Resource Include="Images\default\tile_14.png" />
+    <Resource Include="Images\default\tile_140.png" />
+    <Resource Include="Images\default\tile_141.png" />
+    <Resource Include="Images\default\tile_142.png" />
+    <Resource Include="Images\default\tile_143.png" />
+    <Resource Include="Images\default\tile_144.png" />
+    <Resource Include="Images\default\tile_145.png" />
+    <Resource Include="Images\default\tile_146.png" />
+    <Resource Include="Images\default\tile_147.png" />
+    <Resource Include="Images\default\tile_148.png" />
+    <Resource Include="Images\default\tile_149.png" />
+    <Resource Include="Images\default\tile_15.png" />
+    <Resource Include="Images\default\tile_150.png" />
+    <Resource Include="Images\default\tile_151.png" />
+    <Resource Include="Images\default\tile_152.png" />
+    <Resource Include="Images\default\tile_153.png" />
+    <Resource Include="Images\default\tile_154.png" />
+    <Resource Include="Images\default\tile_155.png" />
+    <Resource Include="Images\default\tile_156.png" />
+    <Resource Include="Images\default\tile_157.png" />
+    <Resource Include="Images\default\tile_158.png" />
+    <Resource Include="Images\default\tile_159.png" />
+    <Resource Include="Images\default\tile_16.png" />
+    <Resource Include="Images\default\tile_160.png" />
+    <Resource Include="Images\default\tile_161.png" />
+    <Resource Include="Images\default\tile_162.png" />
+    <Resource Include="Images\default\tile_163.png" />
+    <Resource Include="Images\default\tile_164.png" />
+    <Resource Include="Images\default\tile_165.png" />
+    <Resource Include="Images\default\tile_166.png" />
+    <Resource Include="Images\default\tile_167.png" />
+    <Resource Include="Images\default\tile_168.png" />
+    <Resource Include="Images\default\tile_169.png" />
+    <Resource Include="Images\default\tile_17.png" />
+    <Resource Include="Images\default\tile_170.png" />
+    <Resource Include="Images\default\tile_171.png" />
+    <Resource Include="Images\default\tile_172.png" />
+    <Resource Include="Images\default\tile_173.png" />
+    <Resource Include="Images\default\tile_174.png" />
+    <Resource Include="Images\default\tile_175.png" />
+    <Resource Include="Images\default\tile_176.png" />
+    <Resource Include="Images\default\tile_177.png" />
+    <Resource Include="Images\default\tile_178.png" />
+    <Resource Include="Images\default\tile_179.png" />
+    <Resource Include="Images\default\tile_18.png" />
+    <Resource Include="Images\default\tile_180.png" />
+    <Resource Include="Images\default\tile_181.png" />
+    <Resource Include="Images\default\tile_182.png" />
+    <Resource Include="Images\default\tile_183.png" />
+    <Resource Include="Images\default\tile_184.png" />
+    <Resource Include="Images\default\tile_185.png" />
+    <Resource Include="Images\default\tile_186.png" />
+    <Resource Include="Images\default\tile_187.png" />
+    <Resource Include="Images\default\tile_188.png" />
+    <Resource Include="Images\default\tile_189.png" />
+    <Resource Include="Images\default\tile_19.png" />
+    <Resource Include="Images\default\tile_190.png" />
+    <Resource Include="Images\default\tile_191.png" />
+    <Resource Include="Images\default\tile_192.png" />
+    <Resource Include="Images\default\tile_193.png" />
+    <Resource Include="Images\default\tile_194.png" />
+    <Resource Include="Images\default\tile_195.png" />
+    <Resource Include="Images\default\tile_196.png" />
+    <Resource Include="Images\default\tile_197.png" />
+    <Resource Include="Images\default\tile_198.png" />
+    <Resource Include="Images\default\tile_199.png" />
+    <Resource Include="Images\default\tile_2.png" />
+    <Resource Include="Images\default\tile_20.png" />
+    <Resource Include="Images\default\tile_200.png" />
+    <Resource Include="Images\default\tile_201.png" />
+    <Resource Include="Images\default\tile_202.png" />
+    <Resource Include="Images\default\tile_203.png" />
+    <Resource Include="Images\default\tile_204.png" />
+    <Resource Include="Images\default\tile_205.png" />
+    <Resource Include="Images\default\tile_206.png" />
+    <Resource Include="Images\default\tile_207.png" />
+    <Resource Include="Images\default\tile_208.png" />
+    <Resource Include="Images\default\tile_209.png" />
+    <Resource Include="Images\default\tile_21.png" />
+    <Resource Include="Images\default\tile_210.png" />
+    <Resource Include="Images\default\tile_211.png" />
+    <Resource Include="Images\default\tile_212.png" />
+    <Resource Include="Images\default\tile_213.png" />
+    <Resource Include="Images\default\tile_214.png" />
+    <Resource Include="Images\default\tile_215.png" />
+    <Resource Include="Images\default\tile_216.png" />
+    <Resource Include="Images\default\tile_217.png" />
+    <Resource Include="Images\default\tile_218.png" />
+    <Resource Include="Images\default\tile_219.png" />
+    <Resource Include="Images\default\tile_22.png" />
+    <Resource Include="Images\default\tile_220.png" />
+    <Resource Include="Images\default\tile_221.png" />
+    <Resource Include="Images\default\tile_222.png" />
+    <Resource Include="Images\default\tile_223.png" />
+    <Resource Include="Images\default\tile_224.png" />
+    <Resource Include="Images\default\tile_225.png" />
+    <Resource Include="Images\default\tile_226.png" />
+    <Resource Include="Images\default\tile_227.png" />
+    <Resource Include="Images\default\tile_228.png" />
+    <Resource Include="Images\default\tile_229.png" />
+    <Resource Include="Images\default\tile_23.png" />
+    <Resource Include="Images\default\tile_230.png" />
+    <Resource Include="Images\default\tile_231.png" />
+    <Resource Include="Images\default\tile_232.png" />
+    <Resource Include="Images\default\tile_233.png" />
+    <Resource Include="Images\default\tile_234.png" />
+    <Resource Include="Images\default\tile_235.png" />
+    <Resource Include="Images\default\tile_236.png" />
+    <Resource Include="Images\default\tile_237.png" />
+    <Resource Include="Images\default\tile_238.png" />
+    <Resource Include="Images\default\tile_239.png" />
+    <Resource Include="Images\default\tile_24.png" />
+    <Resource Include="Images\default\tile_240.png" />
+    <Resource Include="Images\default\tile_241.png" />
+    <Resource Include="Images\default\tile_242.png" />
+    <Resource Include="Images\default\tile_243.png" />
+    <Resource Include="Images\default\tile_244.png" />
+    <Resource Include="Images\default\tile_245.png" />
+    <Resource Include="Images\default\tile_246.png" />
+    <Resource Include="Images\default\tile_247.png" />
+    <Resource Include="Images\default\tile_248.png" />
+    <Resource Include="Images\default\tile_249.png" />
+    <Resource Include="Images\default\tile_25.png" />
+    <Resource Include="Images\default\tile_250.png" />
+    <Resource Include="Images\default\tile_251.png" />
+    <Resource Include="Images\default\tile_252.png" />
+    <Resource Include="Images\default\tile_253.png" />
+    <Resource Include="Images\default\tile_254.png" />
+    <Resource Include="Images\default\tile_255.png" />
+    <Resource Include="Images\default\tile_26.png" />
+    <Resource Include="Images\default\tile_27.png" />
+    <Resource Include="Images\default\tile_28.png" />
+    <Resource Include="Images\default\tile_29.png" />
+    <Resource Include="Images\default\tile_3.png" />
+    <Resource Include="Images\default\tile_30.png" />
+    <Resource Include="Images\default\tile_31.png" />
+    <Resource Include="Images\default\tile_32.png" />
+    <Resource Include="Images\default\tile_33.png" />
+    <Resource Include="Images\default\tile_34.png" />
+    <Resource Include="Images\default\tile_35.png" />
+    <Resource Include="Images\default\tile_36.png" />
+    <Resource Include="Images\default\tile_37.png" />
+    <Resource Include="Images\default\tile_38.png" />
+    <Resource Include="Images\default\tile_39.png" />
+    <Resource Include="Images\default\tile_4.png" />
+    <Resource Include="Images\default\tile_40.png" />
+    <Resource Include="Images\default\tile_41.png" />
+    <Resource Include="Images\default\tile_42.png" />
+    <Resource Include="Images\default\tile_43.png" />
+    <Resource Include="Images\default\tile_44.png" />
+    <Resource Include="Images\default\tile_45.png" />
+    <Resource Include="Images\default\tile_46.png" />
+    <Resource Include="Images\default\tile_47.png" />
+    <Resource Include="Images\default\tile_48.png" />
+    <Resource Include="Images\default\tile_49.png" />
+    <Resource Include="Images\default\tile_5.png" />
+    <Resource Include="Images\default\tile_50.png" />
+    <Resource Include="Images\default\tile_51.png" />
+    <Resource Include="Images\default\tile_52.png" />
+    <Resource Include="Images\default\tile_53.png" />
+    <Resource Include="Images\default\tile_54.png" />
+    <Resource Include="Images\default\tile_55.png" />
+    <Resource Include="Images\default\tile_56.png" />
+    <Resource Include="Images\default\tile_57.png" />
+    <Resource Include="Images\default\tile_58.png" />
+    <Resource Include="Images\default\tile_59.png" />
+    <Resource Include="Images\default\tile_6.png" />
+    <Resource Include="Images\default\tile_60.png" />
+    <Resource Include="Images\default\tile_61.png" />
+    <Resource Include="Images\default\tile_62.png" />
+    <Resource Include="Images\default\tile_63.png" />
+    <Resource Include="Images\default\tile_64.png" />
+    <Resource Include="Images\default\tile_65.png" />
+    <Resource Include="Images\default\tile_66.png" />
+    <Resource Include="Images\default\tile_67.png" />
+    <Resource Include="Images\default\tile_68.png" />
+    <Resource Include="Images\default\tile_69.png" />
+    <Resource Include="Images\default\tile_7.png" />
+    <Resource Include="Images\default\tile_70.png" />
+    <Resource Include="Images\default\tile_71.png" />
+    <Resource Include="Images\default\tile_72.png" />
+    <Resource Include="Images\default\tile_73.png" />
+    <Resource Include="Images\default\tile_74.png" />
+    <Resource Include="Images\default\tile_75.png" />
+    <Resource Include="Images\default\tile_76.png" />
+    <Resource Include="Images\default\tile_77.png" />
+    <Resource Include="Images\default\tile_78.png" />
+    <Resource Include="Images\default\tile_79.png" />
+    <Resource Include="Images\default\tile_8.png" />
+    <Resource Include="Images\default\tile_80.png" />
+    <Resource Include="Images\default\tile_81.png" />
+    <Resource Include="Images\default\tile_82.png" />
+    <Resource Include="Images\default\tile_83.png" />
+    <Resource Include="Images\default\tile_84.png" />
+    <Resource Include="Images\default\tile_85.png" />
+    <Resource Include="Images\default\tile_86.png" />
+    <Resource Include="Images\default\tile_87.png" />
+    <Resource Include="Images\default\tile_88.png" />
+    <Resource Include="Images\default\tile_89.png" />
+    <Resource Include="Images\default\tile_9.png" />
+    <Resource Include="Images\default\tile_90.png" />
+    <Resource Include="Images\default\tile_91.png" />
+    <Resource Include="Images\default\tile_92.png" />
+    <Resource Include="Images\default\tile_93.png" />
+    <Resource Include="Images\default\tile_94.png" />
+    <Resource Include="Images\default\tile_95.png" />
+    <Resource Include="Images\default\tile_96.png" />
+    <Resource Include="Images\default\tile_97.png" />
+    <Resource Include="Images\default\tile_98.png" />
+    <Resource Include="Images\default\tile_99.png" />
+    <Resource Include="Images\phoebus\tile_0.png" />
+    <Resource Include="Images\phoebus\tile_1.png" />
+    <Resource Include="Images\phoebus\tile_10.png" />
+    <Resource Include="Images\phoebus\tile_100.png" />
+    <Resource Include="Images\phoebus\tile_101.png" />
+    <Resource Include="Images\phoebus\tile_102.png" />
+    <Resource Include="Images\phoebus\tile_103.png" />
+    <Resource Include="Images\phoebus\tile_104.png" />
+    <Resource Include="Images\phoebus\tile_105.png" />
+    <Resource Include="Images\phoebus\tile_106.png" />
+    <Resource Include="Images\phoebus\tile_107.png" />
+    <Resource Include="Images\phoebus\tile_108.png" />
+    <Resource Include="Images\phoebus\tile_109.png" />
+    <Resource Include="Images\phoebus\tile_11.png" />
+    <Resource Include="Images\phoebus\tile_110.png" />
+    <Resource Include="Images\phoebus\tile_111.png" />
+    <Resource Include="Images\phoebus\tile_112.png" />
+    <Resource Include="Images\phoebus\tile_113.png" />
+    <Resource Include="Images\phoebus\tile_114.png" />
+    <Resource Include="Images\phoebus\tile_115.png" />
+    <Resource Include="Images\phoebus\tile_116.png" />
+    <Resource Include="Images\phoebus\tile_117.png" />
+    <Resource Include="Images\phoebus\tile_118.png" />
+    <Resource Include="Images\phoebus\tile_119.png" />
+    <Resource Include="Images\phoebus\tile_12.png" />
+    <Resource Include="Images\phoebus\tile_120.png" />
+    <Resource Include="Images\phoebus\tile_121.png" />
+    <Resource Include="Images\phoebus\tile_122.png" />
+    <Resource Include="Images\phoebus\tile_123.png" />
+    <Resource Include="Images\phoebus\tile_124.png" />
+    <Resource Include="Images\phoebus\tile_125.png" />
+    <Resource Include="Images\phoebus\tile_126.png" />
+    <Resource Include="Images\phoebus\tile_127.png" />
+    <Resource Include="Images\phoebus\tile_128.png" />
+    <Resource Include="Images\phoebus\tile_129.png" />
+    <Resource Include="Images\phoebus\tile_13.png" />
+    <Resource Include="Images\phoebus\tile_130.png" />
+    <Resource Include="Images\phoebus\tile_131.png" />
+    <Resource Include="Images\phoebus\tile_132.png" />
+    <Resource Include="Images\phoebus\tile_133.png" />
+    <Resource Include="Images\phoebus\tile_134.png" />
+    <Resource Include="Images\phoebus\tile_135.png" />
+    <Resource Include="Images\phoebus\tile_136.png" />
+    <Resource Include="Images\phoebus\tile_137.png" />
+    <Resource Include="Images\phoebus\tile_138.png" />
+    <Resource Include="Images\phoebus\tile_139.png" />
+    <Resource Include="Images\phoebus\tile_14.png" />
+    <Resource Include="Images\phoebus\tile_140.png" />
+    <Resource Include="Images\phoebus\tile_141.png" />
+    <Resource Include="Images\phoebus\tile_142.png" />
+    <Resource Include="Images\phoebus\tile_143.png" />
+    <Resource Include="Images\phoebus\tile_144.png" />
+    <Resource Include="Images\phoebus\tile_145.png" />
+    <Resource Include="Images\phoebus\tile_146.png" />
+    <Resource Include="Images\phoebus\tile_147.png" />
+    <Resource Include="Images\phoebus\tile_148.png" />
+    <Resource Include="Images\phoebus\tile_149.png" />
+    <Resource Include="Images\phoebus\tile_15.png" />
+    <Resource Include="Images\phoebus\tile_150.png" />
+    <Resource Include="Images\phoebus\tile_151.png" />
+    <Resource Include="Images\phoebus\tile_152.png" />
+    <Resource Include="Images\phoebus\tile_153.png" />
+    <Resource Include="Images\phoebus\tile_154.png" />
+    <Resource Include="Images\phoebus\tile_155.png" />
+    <Resource Include="Images\phoebus\tile_156.png" />
+    <Resource Include="Images\phoebus\tile_157.png" />
+    <Resource Include="Images\phoebus\tile_158.png" />
+    <Resource Include="Images\phoebus\tile_159.png" />
+    <Resource Include="Images\phoebus\tile_16.png" />
+    <Resource Include="Images\phoebus\tile_160.png" />
+    <Resource Include="Images\phoebus\tile_161.png" />
+    <Resource Include="Images\phoebus\tile_162.png" />
+    <Resource Include="Images\phoebus\tile_163.png" />
+    <Resource Include="Images\phoebus\tile_164.png" />
+    <Resource Include="Images\phoebus\tile_165.png" />
+    <Resource Include="Images\phoebus\tile_166.png" />
+    <Resource Include="Images\phoebus\tile_167.png" />
+    <Resource Include="Images\phoebus\tile_168.png" />
+    <Resource Include="Images\phoebus\tile_169.png" />
+    <Resource Include="Images\phoebus\tile_17.png" />
+    <Resource Include="Images\phoebus\tile_170.png" />
+    <Resource Include="Images\phoebus\tile_171.png" />
+    <Resource Include="Images\phoebus\tile_172.png" />
+    <Resource Include="Images\phoebus\tile_173.png" />
+    <Resource Include="Images\phoebus\tile_174.png" />
+    <Resource Include="Images\phoebus\tile_175.png" />
+    <Resource Include="Images\phoebus\tile_176.png" />
+    <Resource Include="Images\phoebus\tile_177.png" />
+    <Resource Include="Images\phoebus\tile_178.png" />
+    <Resource Include="Images\phoebus\tile_179.png" />
+    <Resource Include="Images\phoebus\tile_18.png" />
+    <Resource Include="Images\phoebus\tile_180.png" />
+    <Resource Include="Images\phoebus\tile_181.png" />
+    <Resource Include="Images\phoebus\tile_182.png" />
+    <Resource Include="Images\phoebus\tile_183.png" />
+    <Resource Include="Images\phoebus\tile_184.png" />
+    <Resource Include="Images\phoebus\tile_185.png" />
+    <Resource Include="Images\phoebus\tile_186.png" />
+    <Resource Include="Images\phoebus\tile_187.png" />
+    <Resource Include="Images\phoebus\tile_188.png" />
+    <Resource Include="Images\phoebus\tile_189.png" />
+    <Resource Include="Images\phoebus\tile_19.png" />
+    <Resource Include="Images\phoebus\tile_190.png" />
+    <Resource Include="Images\phoebus\tile_191.png" />
+    <Resource Include="Images\phoebus\tile_192.png" />
+    <Resource Include="Images\phoebus\tile_193.png" />
+    <Resource Include="Images\phoebus\tile_194.png" />
+    <Resource Include="Images\phoebus\tile_195.png" />
+    <Resource Include="Images\phoebus\tile_196.png" />
+    <Resource Include="Images\phoebus\tile_197.png" />
+    <Resource Include="Images\phoebus\tile_198.png" />
+    <Resource Include="Images\phoebus\tile_199.png" />
+    <Resource Include="Images\phoebus\tile_2.png" />
+    <Resource Include="Images\phoebus\tile_20.png" />
+    <Resource Include="Images\phoebus\tile_200.png" />
+    <Resource Include="Images\phoebus\tile_201.png" />
+    <Resource Include="Images\phoebus\tile_202.png" />
+    <Resource Include="Images\phoebus\tile_203.png" />
+    <Resource Include="Images\phoebus\tile_204.png" />
+    <Resource Include="Images\phoebus\tile_205.png" />
+    <Resource Include="Images\phoebus\tile_206.png" />
+    <Resource Include="Images\phoebus\tile_207.png" />
+    <Resource Include="Images\phoebus\tile_208.png" />
+    <Resource Include="Images\phoebus\tile_209.png" />
+    <Resource Include="Images\phoebus\tile_21.png" />
+    <Resource Include="Images\phoebus\tile_210.png" />
+    <Resource Include="Images\phoebus\tile_211.png" />
+    <Resource Include="Images\phoebus\tile_212.png" />
+    <Resource Include="Images\phoebus\tile_213.png" />
+    <Resource Include="Images\phoebus\tile_214.png" />
+    <Resource Include="Images\phoebus\tile_215.png" />
+    <Resource Include="Images\phoebus\tile_216.png" />
+    <Resource Include="Images\phoebus\tile_217.png" />
+    <Resource Include="Images\phoebus\tile_218.png" />
+    <Resource Include="Images\phoebus\tile_219.png" />
+    <Resource Include="Images\phoebus\tile_22.png" />
+    <Resource Include="Images\phoebus\tile_220.png" />
+    <Resource Include="Images\phoebus\tile_221.png" />
+    <Resource Include="Images\phoebus\tile_222.png" />
+    <Resource Include="Images\phoebus\tile_223.png" />
+    <Resource Include="Images\phoebus\tile_224.png" />
+    <Resource Include="Images\phoebus\tile_225.png" />
+    <Resource Include="Images\phoebus\tile_226.png" />
+    <Resource Include="Images\phoebus\tile_227.png" />
+    <Resource Include="Images\phoebus\tile_228.png" />
+    <Resource Include="Images\phoebus\tile_229.png" />
+    <Resource Include="Images\phoebus\tile_23.png" />
+    <Resource Include="Images\phoebus\tile_230.png" />
+    <Resource Include="Images\phoebus\tile_231.png" />
+    <Resource Include="Images\phoebus\tile_232.png" />
+    <Resource Include="Images\phoebus\tile_233.png" />
+    <Resource Include="Images\phoebus\tile_234.png" />
+    <Resource Include="Images\phoebus\tile_235.png" />
+    <Resource Include="Images\phoebus\tile_236.png" />
+    <Resource Include="Images\phoebus\tile_237.png" />
+    <Resource Include="Images\phoebus\tile_238.png" />
+    <Resource Include="Images\phoebus\tile_239.png" />
+    <Resource Include="Images\phoebus\tile_24.png" />
+    <Resource Include="Images\phoebus\tile_240.png" />
+    <Resource Include="Images\phoebus\tile_241.png" />
+    <Resource Include="Images\phoebus\tile_242.png" />
+    <Resource Include="Images\phoebus\tile_243.png" />
+    <Resource Include="Images\phoebus\tile_244.png" />
+    <Resource Include="Images\phoebus\tile_245.png" />
+    <Resource Include="Images\phoebus\tile_246.png" />
+    <Resource Include="Images\phoebus\tile_247.png" />
+    <Resource Include="Images\phoebus\tile_248.png" />
+    <Resource Include="Images\phoebus\tile_249.png" />
+    <Resource Include="Images\phoebus\tile_25.png" />
+    <Resource Include="Images\phoebus\tile_250.png" />
+    <Resource Include="Images\phoebus\tile_251.png" />
+    <Resource Include="Images\phoebus\tile_252.png" />
+    <Resource Include="Images\phoebus\tile_253.png" />
+    <Resource Include="Images\phoebus\tile_254.png" />
+    <Resource Include="Images\phoebus\tile_255.png" />
+    <Resource Include="Images\phoebus\tile_26.png" />
+    <Resource Include="Images\phoebus\tile_27.png" />
+    <Resource Include="Images\phoebus\tile_28.png" />
+    <Resource Include="Images\phoebus\tile_29.png" />
+    <Resource Include="Images\phoebus\tile_3.png" />
+    <Resource Include="Images\phoebus\tile_30.png" />
+    <Resource Include="Images\phoebus\tile_31.png" />
+    <Resource Include="Images\phoebus\tile_32.png" />
+    <Resource Include="Images\phoebus\tile_33.png" />
+    <Resource Include="Images\phoebus\tile_34.png" />
+    <Resource Include="Images\phoebus\tile_35.png" />
+    <Resource Include="Images\phoebus\tile_36.png" />
+    <Resource Include="Images\phoebus\tile_37.png" />
+    <Resource Include="Images\phoebus\tile_38.png" />
+    <Resource Include="Images\phoebus\tile_39.png" />
+    <Resource Include="Images\phoebus\tile_4.png" />
+    <Resource Include="Images\phoebus\tile_40.png" />
+    <Resource Include="Images\phoebus\tile_41.png" />
+    <Resource Include="Images\phoebus\tile_42.png" />
+    <Resource Include="Images\phoebus\tile_43.png" />
+    <Resource Include="Images\phoebus\tile_44.png" />
+    <Resource Include="Images\phoebus\tile_45.png" />
+    <Resource Include="Images\phoebus\tile_46.png" />
+    <Resource Include="Images\phoebus\tile_47.png" />
+    <Resource Include="Images\phoebus\tile_48.png" />
+    <Resource Include="Images\phoebus\tile_49.png" />
+    <Resource Include="Images\phoebus\tile_5.png" />
+    <Resource Include="Images\phoebus\tile_50.png" />
+    <Resource Include="Images\phoebus\tile_51.png" />
+    <Resource Include="Images\phoebus\tile_52.png" />
+    <Resource Include="Images\phoebus\tile_53.png" />
+    <Resource Include="Images\phoebus\tile_54.png" />
+    <Resource Include="Images\phoebus\tile_55.png" />
+    <Resource Include="Images\phoebus\tile_56.png" />
+    <Resource Include="Images\phoebus\tile_57.png" />
+    <Resource Include="Images\phoebus\tile_58.png" />
+    <Resource Include="Images\phoebus\tile_59.png" />
+    <Resource Include="Images\phoebus\tile_6.png" />
+    <Resource Include="Images\phoebus\tile_60.png" />
+    <Resource Include="Images\phoebus\tile_61.png" />
+    <Resource Include="Images\phoebus\tile_62.png" />
+    <Resource Include="Images\phoebus\tile_63.png" />
+    <Resource Include="Images\phoebus\tile_64.png" />
+    <Resource Include="Images\phoebus\tile_65.png" />
+    <Resource Include="Images\phoebus\tile_66.png" />
+    <Resource Include="Images\phoebus\tile_67.png" />
+    <Resource Include="Images\phoebus\tile_68.png" />
+    <Resource Include="Images\phoebus\tile_69.png" />
+    <Resource Include="Images\phoebus\tile_7.png" />
+    <Resource Include="Images\phoebus\tile_70.png" />
+    <Resource Include="Images\phoebus\tile_71.png" />
+    <Resource Include="Images\phoebus\tile_72.png" />
+    <Resource Include="Images\phoebus\tile_73.png" />
+    <Resource Include="Images\phoebus\tile_74.png" />
+    <Resource Include="Images\phoebus\tile_75.png" />
+    <Resource Include="Images\phoebus\tile_76.png" />
+    <Resource Include="Images\phoebus\tile_77.png" />
+    <Resource Include="Images\phoebus\tile_78.png" />
+    <Resource Include="Images\phoebus\tile_79.png" />
+    <Resource Include="Images\phoebus\tile_8.png" />
+    <Resource Include="Images\phoebus\tile_80.png" />
+    <Resource Include="Images\phoebus\tile_81.png" />
+    <Resource Include="Images\phoebus\tile_82.png" />
+    <Resource Include="Images\phoebus\tile_83.png" />
+    <Resource Include="Images\phoebus\tile_84.png" />
+    <Resource Include="Images\phoebus\tile_85.png" />
+    <Resource Include="Images\phoebus\tile_86.png" />
+    <Resource Include="Images\phoebus\tile_87.png" />
+    <Resource Include="Images\phoebus\tile_88.png" />
+    <Resource Include="Images\phoebus\tile_89.png" />
+    <Resource Include="Images\phoebus\tile_9.png" />
+    <Resource Include="Images\phoebus\tile_90.png" />
+    <Resource Include="Images\phoebus\tile_91.png" />
+    <Resource Include="Images\phoebus\tile_92.png" />
+    <Resource Include="Images\phoebus\tile_93.png" />
+    <Resource Include="Images\phoebus\tile_94.png" />
+    <Resource Include="Images\phoebus\tile_95.png" />
+    <Resource Include="Images\phoebus\tile_96.png" />
+    <Resource Include="Images\phoebus\tile_97.png" />
+    <Resource Include="Images\phoebus\tile_98.png" />
+    <Resource Include="Images\phoebus\tile_99.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\Silverlight\v4.0\Microsoft.Expression.Blend.Silverlight.targets" />
+</Project>
